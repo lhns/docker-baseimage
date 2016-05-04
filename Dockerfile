@@ -4,6 +4,8 @@ MAINTAINER LolHens <pierrekisters@gmail.com>
 
 ADD main/src/sh/cleanimage.sh /bin/cleanimage
 
+RUN chmod +x /bin/cleanimage
+
 
 RUN apt-get update \
  && apt-get -y install \
