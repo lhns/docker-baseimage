@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 echo "Cleaning image..."
 
 apt-get -y --purge autoremove
