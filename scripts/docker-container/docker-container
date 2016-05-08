@@ -1,0 +1,9 @@
+#!/bin/bash
+
+subcommand=$1
+shift
+
+if [[ -z `echo $subcommand | grep '^[^/]*/.*$'` ]]
+then
+  exec /usr/local/docker-container/docker-container-/${subcommand} "$@"
+fi
