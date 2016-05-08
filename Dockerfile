@@ -2,9 +2,9 @@ FROM debian:jessie
 MAINTAINER LolHens <pierrekisters@gmail.com>
 
 
-ADD main/src/sh/cleanimage.sh /bin/cleanimage
+ADD main/src/sh/cleanimage.sh /usr/bin/cleanimage
 
-RUN chmod +x /bin/cleanimage
+RUN chmod +x /usr/bin/cleanimage
 
 
 RUN apt-get update \
@@ -12,3 +12,6 @@ RUN apt-get update \
       unzip \
       wget \
  && cleanimage
+
+
+VOLUME /usr/local/appdata
