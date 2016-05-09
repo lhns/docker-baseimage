@@ -2,65 +2,6 @@
 *.log
 
 
-### JVM ###
-*.class
-
-## Package Files
-*.jar
-*.war
-*.ear
-
-## virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
-
-
-### Scala ###
-## Scala-IDE specific
-.scala_dependencies
-.worksheet
-
-
-### Java ###
-## Mobile Tools for Java (J2ME)
-.mtj.tmp/
-
-
-### Database ###
-*.trace.db
-*.lock.db
-
-
-### SBT ###
-# Simple Build Tool
-# http://www.scala-sbt.org/release/docs/Getting-Started/Directories.html#configuring-version-control
-target/
-dist/
-lib_managed/
-src_managed/
-project/boot/
-project/plugins/project/
-.history
-.cache
-.lib/
-
-
-### Gradle ###
-.gradle
-build/
-
-## Gradle GUI config
-gradle-app.setting
-
-## Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
-!gradle-wrapper.jar
-
-## Cache of project
-.gradletasknamecache
-
-## Work around https://youtrack.jetbrains.com/issue/IDEA-116898
-# gradle/wrapper/gradle-wrapper.properties
-
-
 ### Eclipse ###
 .metadata
 bin/

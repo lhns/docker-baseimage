@@ -4,8 +4,8 @@ MAINTAINER LolHens <pierrekisters@gmail.com>
 
 ADD scripts/docker-container /usr/local/docker-container
 
-RUN chmod -R +x /usr/local/docker-container
-RUN ln /usr/local/docker-container/docker-container /usr/bin/docker-container
+RUN chmod -R +x /usr/local/docker-container \
+ && ln /usr/local/docker-container/docker-container.sh /usr/bin/docker-container
 
 
 RUN apt-get update \
@@ -14,6 +14,9 @@ RUN apt-get update \
       unzip \
       wget \
  && docker-container cleanup
+
+
+ENTRYPOINT docker-container init
 
 
 VOLUME /usr/local/appdata

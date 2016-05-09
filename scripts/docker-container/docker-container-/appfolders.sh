@@ -5,5 +5,6 @@ shift
 
 if [[ -z `echo $subcommand | grep '^[^/]*/.*$'` ]]
 then
-  exec /usr/local/docker-container/docker-container-/${subcommand} "$@"
+  cd appfolders-/
+  exec "${subcommand}.sh" "$@"
 fi
