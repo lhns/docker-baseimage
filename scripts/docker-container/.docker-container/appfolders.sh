@@ -5,6 +5,6 @@ shift
 
 if [[ -z `echo $subcommand | grep '^[^/]*/.*$'` ]]
 then
-  cd appfolders-/
-  exec "./${subcommand}.sh" "$@"
+  cd .appfolders/
+  sh "${subcommand}.sh" "$@"
 fi
