@@ -13,8 +13,8 @@ then
     echo "$name"
     echo "$source"
 
-    mkdir "${target}"
+    mkdir -p "${target}"
     cp -rf "${source}" "${target}"
-    ln "${target}" "${source}"
+    ln -sf "${target}" "${source}"
   done
 fi

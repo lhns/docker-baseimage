@@ -10,6 +10,7 @@ RUN chmod -R +x /usr/local/docker-containertools/ \
 
 RUN apt-get update \
  && apt-get -y install \
+      nano \
       unzip \
       wget \
  \
