@@ -4,17 +4,13 @@ if [ -f "appfolders.conf" ]
 then
   cat appfolders.conf | while read line
   do
-    appname=`echo ${line} | grep -oP '^"\K([^"]*)(?=" )|^\K([^ ]*)(?= )'`
-    name=`echo ${line} | grep -oP ' "\K([^"]*)(?=" )| \K([^ ]*)(?= )'`
+    apppath=`echo ${line} | grep -oP '^"\K([^"]*)(?=" )|^\K([^ ]*)(?= )'`
     source=`echo ${line} | grep -oP ' "\K([^"]*)(?="$)| \K([^ ]*)(?=$)'`
-    target="/usr/local/appdata/${appname}/${name}/"
-
-    echo "$appname"
-    echo "$name"
-    echo "$source"
+    target="/usr/local/appdata/${apppath}"
 
     mkdir -p "${target}"
-    cp -rf "${source}" "${target}"
-    ln -sf "${target}" "${source}"
+    cp -rfT "${source}" "${target}"
+    rm -rf "${source}"
+    ln -sfT "${target}" "${source}"
   done
 fi

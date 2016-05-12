@@ -21,7 +21,7 @@ RUN apt-get update \
  && docker-containertools cleanup
 
 
-ENTRYPOINT ["/usr/bin/tini", "-g", "--"]
+ENTRYPOINT ["/usr/bin/tini", "-g", "--", "docker-containertools init"]
 
 
 VOLUME ["/usr/local/appdata"]
