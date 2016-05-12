@@ -1,3 +1,3 @@
 #!/bin/bash
 
-echo "\"$1\" \"$2\"" >> appfolders.conf
+echo "\"$1\" \"$2\" \"$3\"" >> appfolders.conf
