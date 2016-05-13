@@ -27,13 +27,12 @@ then
 
 elif [ "${option}" == "link" ]
 then
-  cat "${program}/appfolders.conf" | while read line
+  cat "/usr/local/etc/appfolders.conf" | while read line
   do
     appfolder=`echo ${line} | grep -oP '^"\K([^"]*)(?=" )|^\K([^ ]*)(?= )'`
     source=`echo ${line} | grep -oP ' "\K([^"]*)(?="$)| \K([^ ]*)(?=$)'`
     target="/usr/local/appdata/${appfolder}"
 
-    echo "LINKING FOLDERS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
     mkdir -p "${target}"
     cp -rfT "${source}" "${target}"
     rm -rf "${source}"
