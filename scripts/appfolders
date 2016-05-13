@@ -13,7 +13,9 @@ if [ "${option}" == "add" ]
 then
   appfolder=$1
   source=$2
+  target="/usr/local/appdata/${appfolder}"
 
+  mkdir -p "${target}"
   echo "\"${appfolder}\" \"${source}\"" >> "/usr/local/etc/appfolders.conf"
 
 elif [ "${option}" == "list" ]
@@ -34,18 +36,13 @@ then
     source=`echo ${line} | grep -oP ' "\K([^"]*)(?="$)| \K([^ ]*)(?=$)'`
     target="/usr/local/appdata/${appfolder}"
 
-    if [ -d "${target}" ]
+    if [ ! "$(ls -A ${target})" ]
     then
-      if [ ! "$(ls -A ${target})" ]
-      then
-        cp -rfT "${source}" "${target}"
-      fi
-
-      rm -rf "${source}"
-      ln -sfT "${target}" "${source}"
-    else
-      mkdir -p "${target}"
+      cp -rfT "${source}" "${target}"
     fi
+
+    rm -rf "${source}"
+    ln -sfT "${target}" "${source}"
   done
 
 fi
