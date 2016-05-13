@@ -1,0 +1,13 @@
+#!/bin/bash
+
+ls -p "/etc/my_init.d" | grep -v "/" | while read file
+do
+  "/etc/my_init.d/${file}"
+done
+
+"/etc/rc.local"
+
+export > /etc/envvars
+nohup runsvdir-start > /dev/null 2>&1 &
+
+exec $@

@@ -2,27 +2,34 @@ FROM debian:jessie
 MAINTAINER LolHens <pierrekisters@gmail.com>
 
 
-ADD ["scripts/docker-containertools", "/usr/local/docker-containertools"]
-
-RUN chmod -R +x /usr/local/docker-containertools/ \
- && ln /usr/local/docker-containertools/docker-containertools.sh /usr/bin/docker-containertools
-
+COPY ["scripts/cleanimage", "/usr/local/bin/"]
+RUN chmod +x "/usr/local/bin/cleanimage"
 
 RUN apt-get update \
  && apt-get -y install \
       nano \
+      runit \
       unzip \
       wget \
- \
- && wget -P /tmp https://github.com/krallin/tini/releases/download/v0.9.0/tini \
+ && cleanimage
+
+RUN wget -O /tmp/tini https://github.com/krallin/tini/releases/download/v0.9.0/tini \
  && chmod +x /tmp/tini \
- && mv /tmp/tini /usr/bin/ \
- \
- && docker-containertools cleanup
+ && mv /tmp/tini /usr/local/bin/
+
+COPY ["scripts/my_init", "/usr/local/bin/"]
+RUN chmod +x "/usr/local/bin/my_init" \
+ && mkdir "/etc/my_init.d"
+
+COPY ["scripts/appfolders", "/usr/local/bin/"]
+RUN chmod +x "/usr/local/bin/appfolders" \
+ && echo "appfolders link" > "/etc/my_init.d/link_appfolders" \
+ && chmod +x "/etc/my_init.d/link_appfolders"
+
+RUN cleanimage
 
 
-ENTRYPOINT ["/usr/bin/tini", "-g", "--", "docker-containertools", "init"]
+ENTRYPOINT ["tini", "-g", "--", "my_init"]
 
 
 VOLUME ["/usr/local/appdata"]
-
