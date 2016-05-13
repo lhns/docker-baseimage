@@ -5,6 +5,7 @@ then
   touch "/usr/local/etc/appfolders.conf"
 fi
 
+
 option=$1
 shift
 
