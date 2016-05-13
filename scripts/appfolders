@@ -34,10 +34,18 @@ then
     source=`echo ${line} | grep -oP ' "\K([^"]*)(?="$)| \K([^ ]*)(?=$)'`
     target="/usr/local/appdata/${appfolder}"
 
-    mkdir -p "${target}"
-    cp -rfT "${source}" "${target}"
-    rm -rf "${source}"
-    ln -sfT "${target}" "${source}"
+    if [ -d "${target}" ]
+    then
+      if [ ! "$(ls -A ${target})" ]
+      then
+        cp -rfT "${source}" "${target}"
+      fi
+
+      rm -rf "${source}"
+      ln -sfT "${target}" "${source}"
+    else
+      mkdir -p "${target}"
+    fi
   done
 
 fi
