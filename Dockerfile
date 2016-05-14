@@ -29,6 +29,3 @@ RUN cleanimage
 
 
 ENTRYPOINT ["tini", "-g", "--", "my_init"]
-
-
-VOLUME ["/usr/local/appdata"]
