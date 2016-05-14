@@ -36,6 +36,11 @@ then
     source=`echo ${line} | grep -oP ' "\K([^"]*)(?="$)| \K([^ ]*)(?=$)'`
     target="/usr/local/appdata/${appfolder}"
 
+    if [ ! -d "${target}" ]
+    then
+      mkdir -p "${target}"
+    fi
+
     if [ ! -d "${source}" ]
     then
       mkdir -p "${source}"
