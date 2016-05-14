@@ -22,7 +22,7 @@ RUN chmod +x "/usr/local/bin/my_init" \
 
 COPY ["scripts/appfolders", "/usr/local/bin/"]
 RUN chmod +x "/usr/local/bin/appfolders" \
- && echo "appfolders link" > "/etc/my_init.d/link-appfolders" \
+ && echo "appfolders link &> /var/log/appfolders.log" > "/etc/my_init.d/link-appfolders" \
  && chmod +x "/etc/my_init.d/link-appfolders"
 
 RUN cleanimage
