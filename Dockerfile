@@ -25,8 +25,7 @@ RUN chmod +x "/usr/local/bin/appfolders" \
  && echo "appfolders link &> /var/log/appfolders.log" > "/etc/my_init.d/link-appfolders" \
  && chmod +x "/etc/my_init.d/link-appfolders"
 
-RUN cleanimage \
- && rm -rf "/var/log/*"
+RUN cleanimage
 
 
 ENTRYPOINT ["tini", "-g", "--", "my_init"]
