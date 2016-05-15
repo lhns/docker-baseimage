@@ -13,8 +13,8 @@ RUN apt-get update \
       wget \
  && cleanimage
 
-RUN wget -O /usr/local/bin/tini https://github.com/krallin/tini/releases/download/v0.9.0/tini \
- && chmod +x /usr/local/bin/tini
+RUN wget -O "/usr/local/bin/tini" "https://github.com/krallin/tini/releases/download/v0.9.0/tini" \
+ && chmod +x "/usr/local/bin/tini"
 
 COPY ["scripts/my_init", "/usr/local/bin/"]
 RUN chmod +x "/usr/local/bin/my_init" \
@@ -25,7 +25,8 @@ RUN chmod +x "/usr/local/bin/appfolders" \
  && echo "appfolders link &> /var/log/appfolders.log" > "/etc/my_init.d/link-appfolders" \
  && chmod +x "/etc/my_init.d/link-appfolders"
 
-RUN cleanimage
+RUN cleanimage \
+ && rm -rf "/var/log/*"
 
 
 ENTRYPOINT ["tini", "-g", "--", "my_init"]

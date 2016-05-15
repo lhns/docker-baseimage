@@ -6,10 +6,12 @@ apt-get -y --purge autoremove
 apt-get -y clean
 
 rm -rf \
-  /tmp/* \
-  /var/cache/* \
-  /var/lib/apt/lists/* \
-  /var/log/* \
-  /var/tmp/* \
+  "/tmp/*" \
+  "/var/tmp/*" \
+  "/var/cache/*" \
+  "/var/lib/apt/lists/*" \
+  "/var/log/alternatives.log" \
+  "/var/log/apt/" \
+  "/var/log/dpkg.log"
 
 echo "Image cleaned."
