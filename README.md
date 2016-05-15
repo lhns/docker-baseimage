@@ -11,6 +11,5 @@
 
 * tini
 * nano
-* runit
 * unzip
 * wget

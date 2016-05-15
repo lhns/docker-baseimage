@@ -7,7 +7,4 @@ done
 
 "/etc/rc.local"
 
-export > /etc/envvars
-nohup runsvdir-start > /dev/null 2>&1 &
-
 exec "$@"

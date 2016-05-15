@@ -8,7 +8,6 @@ RUN chmod +x "/usr/local/bin/cleanimage"
 RUN apt-get update \
  && apt-get -y install \
       nano \
-      runit \
       unzip \
       wget \
  && cleanimage
