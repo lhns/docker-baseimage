@@ -12,6 +12,12 @@ rm -rf \
   "/var/lib/apt/lists/"* \
   "/var/log/alternatives.log" \
   "/var/log/apt/" \
-  "/var/log/dpkg.log"
+  "/var/log/bootstrap.log" \
+  "/var/log/btmp" \
+  "/var/log/dpkg.log" \
+  "/var/log/faillog" \
+  "/var/log/fsck/" \
+  "/var/log/lastlog" \
+  "/var/log/wtmp"
 
 echo "Image cleaned."
