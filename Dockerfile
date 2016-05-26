@@ -12,8 +12,8 @@ RUN apt-get update \
       wget \
  && cleanimage
 
-ADD ["https://github.com/krallin/tini/releases/download/v0.9.0/tini", "/usr/local/bin/"] \
-RUN chmod +x "/usr/local/bin/tini"
+RUN wget -O "/usr/local/bin/tini" "https://github.com/krallin/tini/releases/download/v0.9.0/tini" \
+ && chmod +x "/usr/local/bin/tini"
 
 COPY ["bin/my_init", "/usr/local/bin/"]
 RUN chmod +x "/usr/local/bin/my_init" \
