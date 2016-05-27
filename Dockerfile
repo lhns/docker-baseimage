@@ -21,8 +21,8 @@ RUN chmod +x "/usr/local/bin/my_init" \
 
 ADD ["https://raw.githubusercontent.com/LolHens/docker-tools/master/bin/appfolders", "/usr/local/bin/"]
 RUN chmod +x "/usr/local/bin/appfolders" \
- && echo "appfolders link &> /var/log/appfolders.log" > "/etc/my_init.d/link-appfolders" \
- && chmod +x "/etc/my_init.d/link-appfolders"
+ && echo "appfolders link &> /var/log/appfolders.log" > "/etc/my_init.d/000-link-appfolders" \
+ && chmod +x "/etc/my_init.d/000-link-appfolders"
 
 RUN cleanimage
 
