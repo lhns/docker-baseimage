@@ -2,6 +2,10 @@ FROM debian:jessie
 MAINTAINER LolHens <pierrekisters@gmail.com>
 
 
+ENV TINI_VERSION 0.10.0
+ENV TINI_URL https://github.com/krallin/tini/releases/download/v$TINI_VERSION/tini
+
+
 ADD ["https://raw.githubusercontent.com/LolHens/docker-tools/master/bin/cleanimage", "/usr/local/bin/"]
 RUN chmod +x "/usr/local/bin/cleanimage"
 
@@ -12,7 +16,7 @@ RUN apt-get update \
       wget \
  && cleanimage
 
-RUN wget -O "/usr/local/bin/tini" "https://github.com/krallin/tini/releases/download/v0.9.0/tini" \
+RUN wget -O "/usr/local/bin/tini" "$TINI_URL" \
  && chmod +x "/usr/local/bin/tini"
 
 ADD ["https://raw.githubusercontent.com/LolHens/docker-tools/master/bin/my_init", "/usr/local/bin/"]
