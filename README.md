@@ -12,4 +12,5 @@
 * tini
 * nano
 * unzip
-* wget
+* curl
+* Deprecated: wget
