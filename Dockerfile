@@ -17,7 +17,6 @@ RUN apt-get update \
       curl \
       nano \
       unzip \
-      wget \
  && cleanimage
 
 RUN curl -Lo "/usr/local/bin/tini" "$TINI_URL" \

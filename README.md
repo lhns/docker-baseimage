@@ -9,8 +9,9 @@
 * appfolders utility
 
 
-* tini
-* nano
-* unzip
+* apt-transport-https
+* ca-certificates
 * curl
-* Deprecated: wget
+* nano
+* tini
+* unzip
