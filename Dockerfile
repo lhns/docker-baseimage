@@ -10,21 +10,25 @@ ADD ["https://raw.githubusercontent.com/LolHens/docker-tools/master/bin/cleanima
 RUN chmod +x "/usr/local/bin/cleanimage"
 
 RUN apt-get update \
+ && apt-get upgrade -y \
  && apt-get -y install \
+      apt-transport-https \
+      ca-certificates \
+      curl \
       nano \
       unzip \
       wget \
  && cleanimage
 
-RUN wget -O "/usr/local/bin/tini" "$TINI_URL" \
+RUN curl -Lo "/usr/local/bin/tini" "$TINI_URL" \
  && chmod +x "/usr/local/bin/tini"
 
-ADD ["https://raw.githubusercontent.com/LolHens/docker-tools/master/bin/my_init", "/usr/local/bin/"]
-RUN chmod +x "/usr/local/bin/my_init" \
+RUN curl -Lo "/usr/local/bin/my_init" "https://raw.githubusercontent.com/LolHens/docker-tools/master/bin/my_init" \
+ && chmod +x "/usr/local/bin/my_init" \
  && mkdir "/etc/my_init.d"
 
-ADD ["https://raw.githubusercontent.com/LolHens/docker-tools/master/bin/appfolders", "/usr/local/bin/"]
-RUN chmod +x "/usr/local/bin/appfolders" \
+RUN curl -Lo "/usr/local/bin/appfolders" "https://raw.githubusercontent.com/LolHens/docker-tools/master/bin/appfolders" \
+ && chmod +x "/usr/local/bin/appfolders" \
  && echo "appfolders link &> /var/log/appfolders.log" > "/etc/my_init.d/000-link-appfolders" \
  && chmod +x "/etc/my_init.d/000-link-appfolders"
 
