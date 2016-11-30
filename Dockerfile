@@ -19,7 +19,7 @@ RUN apt-get update \
       unzip \
  && cleanimage
 
-RUN curl -Lo "/usr/local/bin/tini" "$TINI_URL" \
+RUN curl -Lo "/usr/local/bin/tini" $TINI_URL \
  && chmod +x "/usr/local/bin/tini"
 
 RUN curl -Lo "/usr/local/bin/my_init" "https://raw.githubusercontent.com/LolHens/docker-tools/master/bin/my_init" \
