@@ -2,7 +2,7 @@ FROM debian:jessie
 MAINTAINER LolHens <pierrekisters@gmail.com>
 
 
-ENV TINI_VERSION 0.10.0
+ENV TINI_VERSION 0.13.1
 ENV TINI_URL https://github.com/krallin/tini/releases/download/v$TINI_VERSION/tini
 
 
