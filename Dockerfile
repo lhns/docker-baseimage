@@ -36,4 +36,4 @@ RUN curl -Lo "/usr/local/bin/appfolders" "https://raw.githubusercontent.com/LolH
 RUN cleanimage
 
 
-ENTRYPOINT ["tini", "$(if [ -n \"$TINI_WARN_REAPED\" ]; then echo '-w'; fi)", "--", "my_init"]
+ENTRYPOINT ["tini", "--", "my_init"]
