@@ -2,8 +2,10 @@ FROM debian:jessie
 MAINTAINER LolHens <pierrekisters@gmail.com>
 
 
-ENV TINI_VERSION 0.16.1
+ENV TINI_VERSION 0.18.0
 ENV TINI_URL https://github.com/krallin/tini/releases/download/v$TINI_VERSION/tini
+
+ENV TINI_KILL_PROCESS_GROUP 1
 
 
 ADD ["https://raw.githubusercontent.com/LolHens/docker-tools/master/bin/cleanimage", "/usr/local/bin/"]
@@ -34,4 +36,4 @@ RUN curl -Lo "/usr/local/bin/appfolders" "https://raw.githubusercontent.com/LolH
 RUN cleanimage
 
 
-ENTRYPOINT ["tini", "-g", "--", "my_init"]
+ENTRYPOINT ["tini", "-w", "--", "my_init"]
