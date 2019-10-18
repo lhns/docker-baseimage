@@ -17,6 +17,7 @@ RUN apt-get update \
       apt-transport-https \
       ca-certificates \
       curl \
+      jq \
       nano \
       unzip \
  && cleanimage
